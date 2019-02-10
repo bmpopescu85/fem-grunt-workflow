@@ -15,28 +15,28 @@ module.exports = (grunt) ->
     # files that our tasks will use
     files:
       html:
-        src: "index.html"
+        src: "app/index.html"
 
       less:
-        src: ["css/style.less"]
+        src: ["app/css/style.less"]
 
       js:
         vendor: [
-          "vendor/js/jquery.js"
-          "vendor/js/angular.js"
-          "vendor/js/underscore.js"
-          "vendor/js/base64.js"
-          "vendor/js/extend.js"
+          "app/vendor/js/jquery.js"
+          "app/vendor/js/angular.js"
+          "app/vendor/js/underscore.js"
+          "app/vendor/js/base64.js"
+          "app/vendor/js/extend.js"
         ]
 
         src: [
-          "js/config/**/*.js"
-          "js/app.js"
-          "js/data/**/*.js"
-          "js/directives/**/*.js"
-          "js/controllers/**/*.js"
-          "js/services/**/*.js"
-          "js/**/*.js"
+          "app/js/config/**/*.js"
+          "app/js/app.js"
+          "app/js/data/**/*.js"
+          "app/js/directives/**/*.js"
+          "app/js/controllers/**/*.js"
+          "app/js/services/**/*.js"
+          "app/js/**/*.js"
         ]
 
     concat:
