@@ -84,7 +84,7 @@ module.exports = (grunt) ->
           "dist/index.html"      : "<%= files.html.src %>"
 
     server:
-      base: "#{process.env.SERVER_BASE || 'generated'}"
+      webRoot: "#{process.env.SERVER_BASE || 'generated'}"
       web:
         port: 8000
 

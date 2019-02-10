@@ -9,15 +9,18 @@
   "author": "david mosher",
   "license": "MIT",
   "dependencies": {
-    "grunt-contrib-concat": "~0.3.0",
+    "compression": "^1.7.3",
+    "errorhandler": "^1.5.0",
     "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-less": "~0.8.0",
-    "grunt-contrib-uglify": "~0.2.4"
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-watch": "~0.5.3"
   },
   "devDependencies": {
+    "express": "^4.16.4",
     "grunt-open": "~0.2.2",
     "matchdep": "~0.3.0"
   }
