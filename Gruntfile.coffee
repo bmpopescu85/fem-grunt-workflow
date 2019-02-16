@@ -39,10 +39,55 @@ module.exports = (grunt) ->
           "app/js/**/*.js"
         ]
 
+    clean:
+      workspaces: ["dist", "generated"]
+
+    # create the style.css file from style.less file
+    less:
+      options:
+        paths: ["app/css"]
+        ieCompat: false
+
+      dev:
+        src: "<%= files.less.src %>"
+        dest: "generated/css/style.css"
+
+      dist:
+        options:
+          cleancss: true
+          compress: true
+        src: "<%= files.less.src %>"
+        dest: "dist/css/style.css"
+
+    # create the JS file
     concat:
       js:
         src: ["<%= files.js.vendor %>", "<%= files.js.src %>"]
         dest: "generated/js/app.min.js"
+
+    uglify:
+      options:
+        banner: "<%= banner %>"
+
+      dist:
+        src: "<%= concat.js.dest %>" # input from the concat process
+        dest: "dist/js/app.min.js"
+
+    # copy the html files
+    copy:
+      html:
+        files:
+          "generated/index.html" : "<%= files.html.src %>"
+          "dist/index.html"      : "<%= files.html.src %>"
+
+    server:
+      webRoot: "#{process.env.SERVER_BASE || 'generated'}"
+      web:
+        port: 8000
+
+    open:
+      dev:
+        path: "http://localhost:<%= server.web.port %>"
 
     watch:
       options:
@@ -61,47 +106,7 @@ module.exports = (grunt) ->
         files: ["<%= files.less.src %>"]
         tasks: ["less:dev"]
 
-    less:
-      options:
-        paths: ["app/css"]
-        ieCompat: false
 
-      dev:
-        src: "<%= files.less.src %>"
-        dest: "generated/css/style.css"
-
-      dist:
-        options:
-          cleancss: true
-          compress: true
-        src: "<%= files.less.src %>"
-        dest: "dist/css/style.css"
-
-    copy:
-      html:
-        files:
-          "generated/index.html" : "<%= files.html.src %>"
-          "dist/index.html"      : "<%= files.html.src %>"
-
-    server:
-      webRoot: "#{process.env.SERVER_BASE || 'generated'}"
-      web:
-        port: 8000
-
-    open:
-      dev:
-        path: "http://localhost:<%= server.web.port %>"
-
-    uglify:
-      options:
-        banner: "<%= banner %>"
-
-      dist:
-        src: "<%= concat.js.dest %>" # input from the concat process
-        dest: "dist/js/app.min.js"
-
-    clean:
-      workspaces: ["dist", "generated"]
 
   # loading local tasks
   grunt.loadTasks "tasks"
